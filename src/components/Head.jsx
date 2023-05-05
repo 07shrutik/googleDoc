@@ -161,7 +161,7 @@ const Head = () => {
         </div>
         <div className={styles.menu}>
           <div className={styles.heading}>
-            <p>Untitled document</p>
+            <p contentEditable>Untitled document</p>
             <div className={styles.headIcon}>
               <StarOutlineIcon />
               <DriveFileMoveIcon />
@@ -169,19 +169,17 @@ const Head = () => {
           </div>
           <div className={styles.options}>
             {options.map((option, index) => (
-             
-                <div className={styles.dropdown}>
-                  <button className={styles.dropbtn}>{option.label}</button>
-                  <div className={styles.dropdowncontent}>
-                    {option.values.map((e, index) => (
-                      <a className={styles.Iconname} href="#" key={index}>
-                        <span style={{ marginRight: "4px" }}>{e.Icon}</span>
-                        {e.name}
-                      </a>
-                    ))}
-                  </div>
+              <div className={styles.dropdown}>
+                <button className={styles.dropbtn}>{option.label}</button>
+                <div className={styles.dropdowncontent}>
+                  {option.values.map((e, index) => (
+                    <a className={styles.Iconname} href="#" key={index}>
+                      <span style={{ marginRight: "4px" }}>{e.Icon}</span>
+                      {e.name}
+                    </a>
+                  ))}
                 </div>
-             
+              </div>
             ))}
           </div>
         </div>

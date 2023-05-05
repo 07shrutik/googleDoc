@@ -1,39 +1,3 @@
-// import {useState} from 'react'
-// import Box from '@mui/material/Box';
-// import InputLabel from '@mui/material/InputLabel';
-// import MenuItem from '@mui/material/MenuItem';
-// import FormControl from '@mui/material/FormControl';
-// import Select from '@mui/material/Select';
-
-// export default function DropDown({optionData}) {
-//   const [data, setData] = useState('');
-//   console.log(optionData)
-//   const {def, dataArr}=optionData
-
-//   const handleChange = (event) => {
-//     setData(event.target.value);
-//   };
-
-//   return (
-//     <Box sx={{border:"1px solid red"}}>
-//       <FormControl sx={{m:0.5, width:"auto" , height: "auto"}} size="small">
-//         <Select
-//           labelId="demo-simple-select-label"
-//           id="demo-simple-select"
-//           value={data}
-//           label="Data"
-//           onChange={handleChange}
-//           displayEmpty
-//         >
-//             <MenuItem sx={{fontSize: "1px", color:"blue"}} value="">
-//             {def}
-//           </MenuItem>
-//             {dataArr.map(item=>(<MenuItem value={item}>{item}</MenuItem>))}
-//         </Select>
-//       </FormControl>
-//     </Box>
-//   );
-// }
 
 import {useState} from 'react';
 import { styled } from '@mui/material/styles';
@@ -43,6 +7,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import NativeSelect from '@mui/material/NativeSelect';
 import InputBase from '@mui/material/InputBase';
+import { useRecoilState } from "recoil";
+import { fontSize, fontfamily, zoomData,styleData } from "../../../atom/atom";
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
   'label + &': {
@@ -78,12 +44,31 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function DropDown({optionData}) {
+export default function DropDown({optionData,name}) {
+const [, setfontSize] = useRecoilState(fontSize);
+const [, setfontFamily] = useRecoilState(fontfamily);
+const [, setZoomData] = useRecoilState(zoomData);
+const [, setStyleData] = useRecoilState(styleData);
+
+  
   const [data, setData] = useState('');
-  const {def, dataArr}=optionData
-  const handleChange = (event) => {
-    setData(event.target.value);
-  };
+  const {def, dataArr}=optionData;
+ 
+  function handleChange(e){
+   if(name=="fontSizeData"){
+    setfontSize(e.target.value)
+   }
+   else if(name=="fontData"){
+    setfontFamily(e.target.value);
+   }else if(name=="ZoomData"){
+    setZoomData(e.target.value);
+    console.log(e.target.value);
+   }else if(name=="StyleData"){
+    setStyleData(e.target.value);
+   }
+   
+  }
+  
   return (
     <div>
       
@@ -92,6 +77,7 @@ export default function DropDown({optionData}) {
         <NativeSelect
           id="demo-customized-select-native"
           value={data}
+         
           onChange={handleChange}
           input={<BootstrapInput />}
         //   displayEmpty
