@@ -1,16 +1,33 @@
+import {Fragment, useState} from 'react'
 import {formatBar} from "../../constants/commonData"
 import styles from './FormatBar.module.css'
 
-
+import TextArea from '../TextArea'
 
 
 export default function FormatBar() {
+
+  // const [selectedAction, setSelectedAction]=useState("")
+  const [content, setContent]=useState("")
+
+
+
+  function handleClick(action){
+    console.log((action))
+    // setSelectedAction(action)
+    document.execCommand(action, false, "")
+    setContent(content)
+  }
+
   return (
-    <div>
+    <Fragment>
+    <div className={styles.formatBar}>
       <ul className={styles.formatBarIcons}>
-        {formatBar.map(icon=><li style={{margin: "0.3rem", color:"rgb(93, 91, 91)", fontSize: "10"}} key={icon.description} >{icon.icons}</li>)}
+        {formatBar.map((icon,index)=><li style={{margin: "0.3rem", color:"rgb(93, 91, 91)", fontSize: "10", cursor: "pointer"}} key={index} onClick={()=>handleClick(icon.tag)} >{icon.icons}</li>)}
       </ul>
     </div>
+    <TextArea content={content} />
+    </Fragment>
   )
 }
 

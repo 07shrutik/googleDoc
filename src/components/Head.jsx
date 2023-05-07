@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 import DescriptionIcon from "@mui/icons-material/Description";
 import CommentIcon from "@mui/icons-material/Comment";
 import VideocamIcon from "@mui/icons-material/Videocam";
@@ -27,6 +29,8 @@ import CreateIcon from "@mui/icons-material/Create";
 import CheckIcon from "@mui/icons-material/Check";
 import styles from "./Head.module.css";
 import { Avatar } from "@mui/material";
+
+import FormatBar from "./formatBar/FormatBar";
 
 const Head = () => {
   const options = [
@@ -152,24 +156,24 @@ const Head = () => {
     },
   ];
   return (
-    <div className={styles.header}>
-      <div className={styles.left}>
-        <div className={styles.logo}>
-          <DescriptionIcon
-            sx={{ color: "#4285F4", height: "65px", width: "65px" }}
-          />
-        </div>
-        <div className={styles.menu}>
-          <div className={styles.heading}>
-            <p>Untitled document</p>
-            <div className={styles.headIcon}>
-              <StarOutlineIcon />
-              <DriveFileMoveIcon />
-            </div>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <div className={styles.left}>
+          <div className={styles.logo}>
+            <DescriptionIcon
+              sx={{ color: "#4285F4", height: "65px", width: "65px" }}
+            />
           </div>
-          <div className={styles.options}>
-            {options.map((option, index) => (
-             
+          <div className={styles.menu}>
+            <div className={styles.heading}>
+              <p>Untitled document</p>
+              <div className={styles.headIcon}>
+                <StarOutlineIcon />
+                <DriveFileMoveIcon />
+              </div>
+            </div>
+            <div className={styles.options}>
+              {options.map((option, index) => (
                 <div className={styles.dropdown}>
                   <button className={styles.dropbtn}>{option.label}</button>
                   <div className={styles.dropdowncontent}>
@@ -181,21 +185,22 @@ const Head = () => {
                     ))}
                   </div>
                 </div>
-             
-            ))}
+              ))}
+            </div>
           </div>
         </div>
+        <div className={styles.icons}>
+          <CommentIcon />
+          <VideocamIcon />
+          <PersonAddAltIcon />
+          <Avatar
+            sx={{ marginBottom: "3rem" }}
+            alt="Remy Sharp"
+            src="/static/images/avatar/1.jpg"
+          />
+        </div>
       </div>
-      <div className={styles.icons}>
-        <CommentIcon />
-        <VideocamIcon />
-        <PersonAddAltIcon />
-        <Avatar
-          sx={{ marginBottom: "3rem" }}
-          alt="Remy Sharp"
-          src="/static/images/avatar/1.jpg"
-        />
-      </div>
+      <FormatBar />
     </div>
   );
 };

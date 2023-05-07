@@ -1,9 +1,14 @@
+.formatBar{
+  margin-top: -60px;
+  margin-left: 0.7rem;
+}
+
 .formatBarIcons {
   display: flex;
   align-items: center;
   list-style: none;
   /* border:1px solid; */
-
+  border-radius: 2.5rem;
   background-color: rgb(236, 244, 255);
-  width: 100vw;
+  width: 93vw;
 }

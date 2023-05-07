@@ -88,7 +88,7 @@ export default function DropDown({optionData}) {
     <div>
       
       
-      <FormControl sx={{ m: 1 }} variant="standard">
+      <FormControl variant="standard">
         <NativeSelect
           id="demo-customized-select-native"
           value={data}
@@ -99,7 +99,7 @@ export default function DropDown({optionData}) {
           <option sx={{fontSize: "1px", color:"blue"}} value="">
             {def}
           </option>
-             {dataArr.map(item=>(<option value={item}>{item}</option>))}
+             {dataArr.map(item=>(<option value={item} key={item}>{item}</option>))}
         </NativeSelect>
       </FormControl>
     </div>

@@ -10,11 +10,8 @@ const App = () => {
   return (
     <div>
       <Head />
-
-      <FormatBar />
-
-      <TextArea />
-
+      {/* <FormatBar /> */}
+      {/* <TextArea /> */}
     </div>
   );
 };
